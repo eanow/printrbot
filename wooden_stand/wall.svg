@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="2161.4172"
+   height="1427.9528"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="wall.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.64"
+     inkscape:cx="1084.5334"
+     inkscape:cy="805.88638"
+     inkscape:document-units="px"
+     inkscape:current-layer="svg2"
+     showgrid="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1375"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     units="mm" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,375.59053)" />
+  <path
+     style="fill:none;stroke:#ff0000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+     d="M 121.53125 39.40625 L 121.53125 188.25 L 59.3125 188.25 L 59.3125 337.78125 L 121.53125 337.78125 L 121.53125 485.875 L 59.3125 485.875 L 59.3125 635.40625 L 121.53125 635.40625 L 121.53125 783.5 L 59.3125 783.5 L 59.3125 933.03125 L 121.53125 933.03125 L 121.53125 1081.1562 L 59.3125 1081.1562 L 59.3125 1230.6875 L 121.53125 1230.6875 L 121.53125 1379.5 L 1476.3438 1379.5 L 1476.4688 1379.5 L 1477.3438 1379.5 L 1477.3438 1379.4688 C 1550.2589 1376.7603 1609.2188 1077.8461 1609.2188 709.46875 C 1609.2188 341.09275 1550.2587 42.148323 1477.3438 39.4375 L 1477.3438 39.40625 L 1476.3438 39.40625 L 121.53125 39.40625 z "
+     id="1018" />
+</svg>
