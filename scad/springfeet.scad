@@ -29,6 +29,10 @@ module afoot()
 {
     translate([0,0,-thick/2])linear_extrude(height=thick)basic(width,height+flat,round,flat);
 }
+module afoot_inner()
+{
+    translate([0,0,-(thick+1)/2])linear_extrude(height=thick+1)basic(width-(wall*2),height+flat-(wall*2),round,flat);
+}
 module bfoot()
 {
     rotate([0,90,0])translate([0,0,-thick/2])linear_extrude(height=thick)difference()
@@ -37,10 +41,36 @@ module bfoot()
         basic(width-wall,height+flat-wall,round,flat);
     }
 }
+module bfoot_inner()
+{
+    rotate([0,90,0])translate([0,0,-thick/2])linear_extrude(height=thick)difference()
+    {
+        basic(width+wall-(wall*2),height+flat+wall-(wall*2),round,flat);
+        basic(width-wall-(wall*2),height+flat-wall-(wall*2),round,flat);
+    }
+}
+module shaped()
+{
+    difference()
+    {
+        afoot();
+        //bfoot();
+        
+        rotate([-90,0,0])cylinder(r=m3_slot/2,h=height);
+        rotate([90,0,0])cylinder(r=bolt_slot/2,h=height);
+    }
+}
+module shaped_inner()
+{
+difference()
+    {
+        afoot_inner();
+        //bfoot_inner();
+
+    }
+}
 difference()
 {
-    afoot();
-    bfoot();
-    rotate([-90,0,0])cylinder(r=m3_slot/2,h=height);
-    rotate([90,0,0])cylinder(r=bolt_slot/2,h=height);
+    shaped();
+    shaped_inner();
 }
