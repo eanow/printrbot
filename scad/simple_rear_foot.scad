@@ -17,7 +17,9 @@ rivet2_z=27.75;
 rivet2_y=113.5;
 rivet_r=4;
 rivet_thick=5;
-
+m4_slot=4.5;
+$fs=1;
+$fa=1;
 //intermediate values
 
 side_xx=side_ledge*2+frame_thick;
@@ -36,19 +38,23 @@ module rivet1()
 module base()
 {
     linear_extrude(height=lift)
-
-    union()
+    difference()
     {
-        //legs
-        square([foot_width-leg_width,leg_width],center=true);
-        translate([foot_width/2-leg_width/2,0])
+        union()
+        {
+            //legs
+            square([foot_width-leg_width,leg_width],center=true);
+            translate([foot_width/2-leg_width/2,0])
             {
-            circle(r=leg_width/2,center=true);
+                circle(r=leg_width/2,center=true);
             }
-        translate([-1*(foot_width/2-leg_width/2),0])
+            translate([-1*(foot_width/2-leg_width/2),0])
             {
-            circle(r=leg_width/2,center=true);
+                circle(r=leg_width/2,center=true);
             }
+        }
+        translate([foot_width/2-leg_width/2,0])circle(r=m4_slot/2,center=true,$fn=20);
+        translate([-(foot_width/2-leg_width/2),0])circle(r=m4_slot/2,center=true,$fn=20);
     }
 }
 module lip()
