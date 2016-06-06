@@ -21,9 +21,9 @@ clip_split=5;  //where to split clip
 clip_wide=15;   //width of clip
 clip_groove=1.75;  //depth of groove on top of clip
 clip_thick=7; //thickness of clip
-tab_thick=3.2; //tab thickness, should be multiple of extrusion width
-tab_wide=6.4; //tab width
-tab_slop=.3;    //additional gab to have around slot for tab due to printer tolerances
+tab_thick=3; //tab thickness, should be multiple of extrusion width
+tab_wide=6.6; //tab width
+tab_slop=.4;    //additional gab to have around slot for tab due to printer tolerances
 tab_length=5;
 gap_width=60;
 gap_y=50;   //front edge of metal to middle of cutout
@@ -38,6 +38,10 @@ rivet2_z=27.75;
 rivet2_y=113.5;
 rivet_r=4;
 rivet_thick=1.5;
+
+m4_slot=4.5;
+$fa=1;
+$fs=1;
 
 //intermediate values
 front_yy=front_ledge+protrude+frame_thick+side_ledge;
@@ -123,32 +127,57 @@ module base()
     square(size=[(frame_thick+side_ledge)*2+inside_width,foot_length], center=true);
     translate([0,-1*((foot_length-leg_width)/2)])
         {
-            union()
+            difference()
             {
-            //legs
-            square([foot_width-leg_width,leg_width],center=true);
-            translate([foot_width/2-leg_width/2,0])
+                union()
                 {
-                circle(r=leg_width/2,center=true);
+                    //legs
+                    square([foot_width-leg_width,leg_width],center=true);
+                    translate([foot_width/2-leg_width/2,0])
+                    {
+                        circle(r=leg_width/2,center=true);
+                    }
+                    translate([-1*(foot_width/2-leg_width/2),0])
+                    {
+                        circle(r=leg_width/2,center=true);
+                    }
                 }
-            translate([-1*(foot_width/2-leg_width/2),0])
+                translate([foot_width/2-leg_width/2,0])
                 {
-                circle(r=leg_width/2,center=true);
+                    circle(r=m4_slot/2,center=true);
+                }
+                translate([-1*(foot_width/2-leg_width/2),0])
+                {
+                    circle(r=m4_slot/2,center=true);
                 }
             }
         }
     translate([0,1*((foot_length-leg_width)/2)])
         {
             //legs
-            square([foot_width-leg_width,leg_width],center=true);
-            translate([foot_width/2-leg_width/2,0])
+            difference()
+            {
+                union()
                 {
-                circle(r=leg_width/2,center=true);
+                    square([foot_width-leg_width,leg_width],center=true);
+                    translate([foot_width/2-leg_width/2,0])
+                    {
+                        circle(r=leg_width/2,center=true);
+                    }
+                    translate([-1*(foot_width/2-leg_width/2),0])
+                    {
+                        circle(r=leg_width/2,center=true);
+                    }
                 }
-            translate([-1*(foot_width/2-leg_width/2),0])
+                translate([foot_width/2-leg_width/2,0])
                 {
-                circle(r=leg_width/2,center=true);
+                    circle(r=m4_slot/2,center=true);
                 }
+                translate([-1*(foot_width/2-leg_width/2),0])
+                {
+                    circle(r=m4_slot/2,center=true);
+                }
+            }
         }
     }
 }
@@ -275,7 +304,7 @@ module air_cut()
 
 
 
-        difference()
+        /*difference()
             {
                 usb();
                 rivet2();
@@ -283,17 +312,15 @@ module air_cut()
                 {
                     cube([400,400,400],center=true);
                 }
-            }
+            }*/
 
         difference()
         {
             union()
             {
-                
-                
+
                 base();
                 slot();
-                
                 difference()
                 {
                     post();
@@ -306,8 +333,6 @@ module air_cut()
             }
             air_cut();
         }
- 
-    
 
 module clip()
 {
@@ -339,33 +364,33 @@ module clip()
             translate([200+clip_thick+frame_thick/2,0,0])
             {
                 //tall side
-                rotate([0,45,0])
+                rotate([0,30,0])
                 {   
-                    cube([frame_thick,clip_wide,frame_thick],center=true);
+                    cube([frame_thick,clip_wide*2,frame_thick*2],center=true);
                 }
             }
             translate([200-clip_thick-frame_thick/2,0,0])
             {
                 //short side
-                rotate([0,45,0])
+                rotate([0,60,0])
                 {   
-                    cube([frame_thick,clip_wide,frame_thick],center=true);
+                    cube([frame_thick*2,clip_wide*2,frame_thick],center=true);
                 }
             }
             translate([200,clip_wide/2,0])
             {
                 //other sides
-                rotate([45,0,0])
+                rotate([60,0,0])
                 {   
-                    cube([clip_wide,frame_thick,frame_thick],center=true);
+                    cube([clip_wide*2,frame_thick*2,frame_thick],center=true);
                 }
             }
             translate([200,-clip_wide/2,0])
             {
                 //other sides
-                rotate([45,0,0])
+                rotate([30,0,0])
                 {   
-                    cube([clip_wide,frame_thick,frame_thick],center=true);
+                    cube([clip_wide*2,frame_thick,frame_thick*2],center=true);
                 }
             }
         }
