@@ -1,0 +1,67 @@
+$fs=1;
+$fa=1;
+//arc
+arc_t=12;
+num8slot=4.8;
+ep=0.01;
+module num8counter()
+//countersink shape
+{
+    hh=3.6;
+    rr=8.6/2;
+    foot_t=10;
+    translate([0,0,-hh])
+    {
+        cylinder(r1=num8slot/2,r2=rr,h=hh,$fn=24);
+        translate([0,0,-foot_t])cylinder(r1=num8slot/2,r2=num8slot/2,h=hh+foot_t,$fn=24);
+        translate([0,0,hh-ep])cylinder(r=rr,h=foot_t,$fn=24);
+    }
+}
+difference()
+{
+    translate([0,0,arc_t/2])intersection()
+    {
+        difference()
+        {
+            cylinder(r=100,h=arc_t,center=true);
+            cylinder(r=97,h=arc_t+1,center=true);
+        }
+        translate([100,100,0])cube([200,200,13],center=true);
+    }
+    rotate([0,0,30])translate([55,0,0])cube([110,3,3],center=true);
+    rotate([0,0,60])translate([55,0,0])cube([110,3,3],center=true);
+    rotate([0,0,30])translate([55,0,arc_t])cube([110,3,3],center=true);
+    rotate([0,0,60])translate([55,0,arc_t])cube([110,3,3],center=true);
+}
+//spines
+translate([49.5,5,1])cube([99,10,2],center=true);
+translate([5,49.5,1])cube([10,99,2],center=true);
+
+translate([0,-17,0])difference()
+{
+    intersection()
+    {
+        union()
+        {
+            translate([5,9,17])cube([10,18,34],center=true);
+            translate([5,15,16])rotate([20,0,0])cube([10,18,38],center=true);
+        }
+        translate([0,0,17])cube([100,100,34],center=true);
+    }
+    translate([3,8,10])rotate([-20,-90,0])num8counter();
+    translate([3,8,25])rotate([-20,-90,0])num8counter();
+}
+
+//teflon feeder ends
+difference()
+{
+    translate([5,100-5-2,arc_t/2])cube([10,10,arc_t],center=true);  
+    translate([2.5+5+ep,100-5-2,arc_t/2])rotate([0,90,0])cylinder(r=4.6/2,h=5,center=true);
+    translate([0,100-5-2,arc_t/2])rotate([0,90,0])cylinder(r=3/2,h=30,center=true);
+}
+mirror([0,1,0])rotate([0,0,-90])difference()
+{
+    translate([5,100-5-2,arc_t/2])cube([10,10,arc_t],center=true);  
+    translate([2.5+5+ep,100-5-2,arc_t/2])rotate([0,90,0])cylinder(r=4.6/2,h=5,center=true);
+    translate([0,100-5-2,arc_t/2])rotate([0,90,0])cylinder(r=3/2,h=30,center=true);
+}

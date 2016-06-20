@@ -9,7 +9,7 @@ inside_width=88;    //space between metal walls, inside
 outside_width=95;
 corner_thick=(outside_width-inside_width)/2;
 lip=12;         //how tall to make the part that slides over the metal sides
-lift=8;         //how thick of a baseplate
+lift=5;         //how thick of a baseplate
 
 rivet1_z=34.3;
 rivet1_y=6.2;

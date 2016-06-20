@@ -8,7 +8,7 @@ protrude=3;     //how much the metal plates protrude past the side, i.e. the not
 side_ledge=3.5;   //how much thickness on sides and inside
 inside_width=91.5;    //space between metal walls, inside
 lip=12;         //how tall to make the part that slides over the metal sides
-lift=8;         //how thick of a baseplate
+lift=5;         //how thick of a baseplate
 usb_thick=15;   //how thick usb strain relieft should be
 usb_wide=35;    //width
 usb_tall=41;    //height    
@@ -40,6 +40,7 @@ rivet_r=4;
 rivet_thick=1.5;
 
 m4_slot=4.5;
+m4_lock=5;
 $fa=1;
 $fs=1;
 
@@ -356,7 +357,7 @@ module clip()
             }
         translate([200+(clip_thick*2+frame_thick)/2-clip_thick/2,0,clip_split+clip_thick])
             {//pin
-            cube([tab_thick,tab_wide,tab_length*2],center=true);
+            cube([tab_thick,tab_wide,tab_length*2-2],center=true);
             }
         }
         union()

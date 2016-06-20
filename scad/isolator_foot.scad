@@ -10,7 +10,7 @@ $fs=1;
 
 m4_slot=4.5;
 m4_nut_h=3;
-m4_nut_d=7.9;
+m4_nut_d=8.3;
 
 
 module num8counter()
@@ -39,7 +39,7 @@ module foot()
             //squarey bit
             translate([foot_l/2,0,foot_t/2])cube([foot_l,foot_w,foot_t],center=true);
         }
-        translate([0,0,(foot_t-3.6)-.8])translate([foot_l,0,foot_t/2])rotate([0,20,0])num8counter();
+        translate([0,0,(foot_t-3.6)-.8])translate([foot_l,0,foot_t/2])rotate([0,25,0])num8counter();
     }
 }
 module solids()
@@ -53,6 +53,6 @@ difference()
 {
     solids();
     cylinder(r=m4_nut_d/2,h=m4_nut_h*2,center=true,$fn=6);
-    translate([0,0,2+m4_nut_h*2-ep])cylinder(r1=m4_nut_d/2,r2=.1,h=m4_nut_h*2+4,center=true,$fn=6);
+    translate([0,0,1.5+m4_nut_h*2-ep])cylinder(r1=m4_nut_d/2,r2=.1,h=m4_nut_h*2+3,center=true,$fn=6);
     translate([0,0,ep])cylinder(r=m4_slot/2,h=shaft_t*2,center=true);
 }
